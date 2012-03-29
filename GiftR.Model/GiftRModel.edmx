@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GiftR.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="GiftRModelStoreContainer">
+          <EntitySet Name="Sites" EntityType="GiftR.Model.Store.Sites" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SitesOwners" EntityType="GiftR.Model.Store.SitesOwners" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SitesTypes" EntityType="GiftR.Model.Store.SitesTypes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="GiftR.Model.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Sites_SitesTypes" Association="GiftR.Model.Store.FK_Sites_SitesTypes">
+            <End Role="SitesTypes" EntitySet="SitesTypes" />
+            <End Role="Sites" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SitesOwners_Sites" Association="GiftR.Model.Store.FK_SitesOwners_Sites">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="SitesOwners" EntitySet="SitesOwners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SitesOwners_Users" Association="GiftR.Model.Store.FK_SitesOwners_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SitesOwners" EntitySet="SitesOwners" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Sites">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="verificacion_code" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="site_type" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SitesOwners">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="site_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SitesTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="default_page" Type="nvarchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="bigint" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="source" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Sites_SitesTypes">
+          <End Role="SitesTypes" Type="GiftR.Model.Store.SitesTypes" Multiplicity="1" />
+          <End Role="Sites" Type="GiftR.Model.Store.Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SitesTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Sites">
+              <PropertyRef Name="site_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SitesOwners_Sites">
+          <End Role="Sites" Type="GiftR.Model.Store.Sites" Multiplicity="1" />
+          <End Role="SitesOwners" Type="GiftR.Model.Store.SitesOwners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SitesOwners">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SitesOwners_Users">
+          <End Role="Users" Type="GiftR.Model.Store.Users" Multiplicity="1" />
+          <End Role="SitesOwners" Type="GiftR.Model.Store.SitesOwners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SitesOwners">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GiftR.Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="GiftRModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Sites" EntityType="GiftR.Model.Sites" />
+          <EntitySet Name="SitesOwners" EntityType="GiftR.Model.SitesOwners" />
+          <EntitySet Name="SitesTypes" EntityType="GiftR.Model.SitesTypes" />
+          <EntitySet Name="Users" EntityType="GiftR.Model.Users" />
+          <AssociationSet Name="FK_Sites_SitesTypes" Association="GiftR.Model.FK_Sites_SitesTypes">
+            <End Role="SitesTypes" EntitySet="SitesTypes" />
+            <End Role="Sites" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SitesOwners_Sites" Association="GiftR.Model.FK_SitesOwners_Sites">
+            <End Role="Sites" EntitySet="Sites" />
+            <End Role="SitesOwners" EntitySet="SitesOwners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SitesOwners_Users" Association="GiftR.Model.FK_SitesOwners_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SitesOwners" EntitySet="SitesOwners" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Sites">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="verificacion_code" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="site_type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SitesTypes" Relationship="GiftR.Model.FK_Sites_SitesTypes" FromRole="Sites" ToRole="SitesTypes" />
+          <NavigationProperty Name="SitesOwners" Relationship="GiftR.Model.FK_SitesOwners_Sites" FromRole="Sites" ToRole="SitesOwners" />
+        </EntityType>
+        <EntityType Name="SitesOwners">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="site_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sites" Relationship="GiftR.Model.FK_SitesOwners_Sites" FromRole="SitesOwners" ToRole="Sites" />
+          <NavigationProperty Name="Users" Relationship="GiftR.Model.FK_SitesOwners_Users" FromRole="SitesOwners" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="SitesTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="default_page" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Sites" Relationship="GiftR.Model.FK_Sites_SitesTypes" FromRole="SitesTypes" ToRole="Sites" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int64" Nullable="false" />
+          <Property Name="fullname" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="firstname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="lastname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="source" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="SitesOwners" Relationship="GiftR.Model.FK_SitesOwners_Users" FromRole="Users" ToRole="SitesOwners" />
+        </EntityType>
+        <Association Name="FK_Sites_SitesTypes">
+          <End Role="SitesTypes" Type="GiftR.Model.SitesTypes" Multiplicity="1" />
+          <End Role="Sites" Type="GiftR.Model.Sites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SitesTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Sites">
+              <PropertyRef Name="site_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SitesOwners_Sites">
+          <End Role="Sites" Type="GiftR.Model.Sites" Multiplicity="1" />
+          <End Role="SitesOwners" Type="GiftR.Model.SitesOwners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sites">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SitesOwners">
+              <PropertyRef Name="site_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SitesOwners_Users">
+          <End Role="Users" Type="GiftR.Model.Users" Multiplicity="1" />
+          <End Role="SitesOwners" Type="GiftR.Model.SitesOwners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SitesOwners">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GiftRModelStoreContainer" CdmEntityContainer="GiftRModel">
+          <EntitySetMapping Name="Sites"><EntityTypeMapping TypeName="GiftR.Model.Sites"><MappingFragment StoreEntitySet="Sites">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="title" ColumnName="title" />
+            <ScalarProperty Name="verificacion_code" ColumnName="verificacion_code" />
+            <ScalarProperty Name="site_type" ColumnName="site_type" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SitesOwners"><EntityTypeMapping TypeName="GiftR.Model.SitesOwners"><MappingFragment StoreEntitySet="SitesOwners">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="site_id" ColumnName="site_id" />
+            <ScalarProperty Name="user_id" ColumnName="user_id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SitesTypes"><EntityTypeMapping TypeName="GiftR.Model.SitesTypes"><MappingFragment StoreEntitySet="SitesTypes">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="default_page" ColumnName="default_page" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="GiftR.Model.Users"><MappingFragment StoreEntitySet="Users">
+            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="userid" ColumnName="userid" />
+            <ScalarProperty Name="fullname" ColumnName="fullname" />
+            <ScalarProperty Name="firstname" ColumnName="firstname" />
+            <ScalarProperty Name="lastname" ColumnName="lastname" />
+            <ScalarProperty Name="email" ColumnName="email" />
+            <ScalarProperty Name="source" ColumnName="source" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="GiftRModel">
+        <EntityTypeShape EntityType="GiftR.Model.Sites" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906250005" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftR.Model.SitesOwners" Width="1.5" PointX="5.25" PointY="1" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftR.Model.SitesTypes" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7879850260416665" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftR.Model.Users" Width="1.5" PointX="7.875" PointY="1.5" Height="2.5571907552083317" IsExpanded="true" />
+        <AssociationConnector Association="GiftR.Model.FK_Sites_SitesTypes" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.0189925130208333" />
+          <ConnectorPoint PointX="3" PointY="2.0189925130208333" />
+        </AssociationConnector>
+        <AssociationConnector Association="GiftR.Model.FK_SitesOwners_Sites" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.9901432291666668" />
+          <ConnectorPoint PointX="5.25" PointY="1.9901432291666668" />
+        </AssociationConnector>
+        <AssociationConnector Association="GiftR.Model.FK_SitesOwners_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.875" PointY="2.2401432291666667" />
+          <ConnectorPoint PointX="6.75" PointY="2.2401432291666667" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

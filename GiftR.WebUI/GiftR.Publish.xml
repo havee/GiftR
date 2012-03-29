@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Polaroid" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Scripts/ui.core-1.7.2.js" publishTime="03/27/2012 13:58:20" />
+    <file relUrl="images/Sign-in-with-Twitter-darker.png" publishTime="03/24/2012 21:43:28" />
+    <file relUrl="Global.asax" publishTime="03/24/2012 21:43:28" />
+    <file relUrl="bin/OAuthClient.pdb" publishTime="03/27/2012 17:26:21" />
+    <file relUrl="bin/log4net.dll" publishTime="03/24/2012 21:43:28" />
+    <file relUrl="bin/LinqExtender.xml" publishTime="12/15/2010 16:03:38" />
+    <file relUrl="bin/DotNetOpenAuth.xml" publishTime="03/24/2012 21:44:02" />
+    <file relUrl="Main.aspx" publishTime="03/27/2012 17:52:23" />
+    <file relUrl="bin/DotNetOpenAuth.ApplicationBlock.dll" publishTime="03/27/2012 15:36:56" />
+    <file relUrl="bin/DotNetOpenAuth.pdb" publishTime="03/24/2012 21:44:02" />
+    <file relUrl="Scripts/jquery-1.6.1.min.js" publishTime="03/24/2012 21:43:28" />
+    <file relUrl="Scripts/jquery.mousewheel.min.js" publishTime="03/27/2012 13:58:19" />
+    <file relUrl="bin/OAuthClient.dll" publishTime="03/27/2012 17:26:21" />
+    <file relUrl="Scripts/cufon-yui.js" publishTime="03/27/2012 17:18:20" />
+    <file relUrl="bin/DotNetOpenAuth.ApplicationBlock.pdb" publishTime="03/27/2012 15:36:56" />
+    <file relUrl="MasterPage.master" publishTime="03/24/2012 21:43:28" />
+    <file relUrl="images/prev.png" publishTime="03/27/2012 16:42:14" />
+    <file relUrl="bin/DotNetOpenAuth.dll" publishTime="03/24/2012 21:44:02" />
+    <file relUrl="Facebook.aspx" publishTime="03/24/2012 21:54:08" />
+    <file relUrl="images/fb-connect-large.png" publishTime="03/27/2012 12:13:45" />
+    <file relUrl="bin/LinqExtender.dll" publishTime="12/15/2010 16:03:38" />
+    <file relUrl="Default.aspx" publishTime="03/24/2012 21:54:08" />
+    <file relUrl="Scripts/Note_this_400.font.js" publishTime="03/27/2012 17:18:21" />
+    <file relUrl="bin/Linq.Flickr.dll" publishTime="03/27/2012 15:36:57" />
+    <file relUrl="bin/Polaroid.Common.pdb" publishTime="03/27/2012 15:36:58" />
+    <file relUrl="Scripts/ui.draggable-1.7.2.js" publishTime="03/27/2012 13:58:20" />
+    <file relUrl="bin/Polaroid.Common.dll" publishTime="03/27/2012 15:36:58" />
+    <file relUrl="images/next.png" publishTime="03/27/2012 16:42:14" />
+    <file relUrl="bin/Microsoft.Contracts.dll" publishTime="05/01/2011 21:28:39" />
+    <file relUrl="Scripts/jquery.transform-0.8.0.min.js" publishTime="03/27/2012 17:18:20" />
+    <file relUrl="images/loader.gif" publishTime="03/27/2012 16:42:14" />
+    <file relUrl="favicon.ico" publishTime="03/24/2012 21:43:28" />
+    <file relUrl="Scripts/jquery-1.6.1.js" publishTime="03/24/2012 21:43:28" />
+    <file relUrl="bin/Linq.Flickr.pdb" publishTime="03/27/2012 15:36:57" />
+    <file relUrl="Css/style.css" publishTime="03/27/2012 17:57:07" />
+    <file relUrl="bin/System.Web.Mvc.dll" publishTime="05/01/2011 21:28:39" />
+    <file relUrl="Web.config" publishTime="03/27/2012 15:26:05" />
+  </publishProfile>
+</publishData>
