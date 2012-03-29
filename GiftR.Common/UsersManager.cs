@@ -13,7 +13,7 @@ namespace GiftR.Common
         {
             return new Users()
             {
-                email = "",
+                email = "j@sample.com",
                 firstname = user.FirstName,
                 lastname = user.LastName,
                 userid = user.Id,

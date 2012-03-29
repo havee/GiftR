@@ -9,7 +9,7 @@ namespace GiftR.Common
 {
     public class SessionManager
     {
-        private const string _facebook_session_key = "__facebook_session_key";
+        private const string _facebook_session_key = "__facebook_session__key";
 
         public static void SetUser(FacebookGraph user)
         {
