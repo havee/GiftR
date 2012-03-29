@@ -20,6 +20,7 @@ namespace DotNetOpenAuth.ApplicationBlock {
 	using DotNetOpenAuth.Messaging;
 	using DotNetOpenAuth.OAuth;
 	using DotNetOpenAuth.OAuth.ChannelElements;
+    using System.Configuration;
 
 	/// <summary>
 	/// A consumer capable of communicating with Google Data APIs.
@@ -62,7 +63,13 @@ namespace DotNetOpenAuth.ApplicationBlock {
 		/// </summary>
 		private static readonly MessageReceivingEndpoint GetContactsEndpoint = new MessageReceivingEndpoint("http://www.google.com/m8/feeds/contacts/default/full/", HttpDeliveryMethods.GetRequest);
 
-		/// <summary>
+        /// <summary>
+        /// The URI to get contacts once authorization is granted.
+        /// </summary>
+        private static readonly MessageReceivingEndpoint GetShortUrlEndpoint = new MessageReceivingEndpoint("https://www.googleapis.com/urlshortener/v1/url/", HttpDeliveryMethods.GetRequest);
+
+        
+        /// <summary>
 		/// The many specific authorization scopes Google offers.
 		/// </summary>
 		[Flags]
@@ -232,6 +239,51 @@ namespace DotNetOpenAuth.ApplicationBlock {
 			XDocument result = XDocument.Parse(body);
 			return result;
 		}
+
+
+        public static string ShortenUrl(string url)
+        {
+            var key = ConfigurationManager.AppSettings["googleShortUrlApiKey"];
+
+            string post = "{\"longUrl\": \"" + url + "\"}";
+            string shortUrl = url;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://www.googleapis.com/urlshortener/v1/url?key=" + key);
+ 
+            try
+            {
+                request.ServicePoint.Expect100Continue = false;
+                request.Method = "POST";
+                request.ContentLength = post.Length;
+                request.ContentType = "application/json";
+                request.Headers.Add("Cache-Control", "no-cache");
+ 
+                using (Stream requestStream = request.GetRequestStream())
+                {
+                    byte[] postBuffer = Encoding.ASCII.GetBytes(post);
+                    requestStream.Write(postBuffer, 0, postBuffer.Length);
+                }
+ 
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                {
+                    using (Stream responseStream = response.GetResponseStream())
+                    {
+                        using (StreamReader responseReader = new StreamReader(responseStream))
+                        {
+                            string json = responseReader.ReadToEnd();
+                            shortUrl = Regex.Match(json, @"""id"": ?""(?<id>.+)""").Groups["id"].Value;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // if Google's URL Shortner is down...
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+            }
+
+            return shortUrl;
+        }
 
 		public static void PostBlogEntry(ConsumerBase consumer, string accessToken, string blogUrl, string title, XElement body) {
 			string feedUrl;

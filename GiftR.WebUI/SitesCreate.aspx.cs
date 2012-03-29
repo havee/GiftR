@@ -9,11 +9,20 @@ using DotNetOpenAuth.ApplicationBlock.Facebook;
 using GiftR.Repository;
 using GiftR.Model;
 using GiftR.WebUI.Code;
+using DotNetOpenAuth.ApplicationBlock;
+using System.Configuration;
+using DotNetOpenAuth.OAuth;
 
 namespace GiftR.WebUI
 {
     public partial class SitesCreate : System.Web.UI.Page
     {
+        private string AccessToken
+        {
+            get { return (string)Session["GoogleAccessToken"]; }
+            set { Session["GoogleAccessToken"] = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -41,8 +50,35 @@ namespace GiftR.WebUI
                     };
                     sitesRepo.Save(site);
 
-                    Response.Write(HttpExtensions.GetDefaultPageUrl().OriginalString + "?icode=" + code);
-                }                
+                    this.pnlForm.Visible = false;
+                    this.pnlMsg.Visible = true;
+                    this.lblMsg.Text = "El sitio se ha creado satisfactoriamente, accedé ya al mismo:";
+
+                    var shortUrl = GoogleConsumer.ShortenUrl(HttpExtensions.GetDefaultPageUrl().OriginalString + "?icode=" + code);
+
+                    this.hlLink.NavigateUrl = shortUrl;
+                    this.hlLink.Text = shortUrl;
+                }            
+            }
+        }
+
+        private InMemoryTokenManager TokenManager
+        {
+            get
+            {
+                var tokenManager = (InMemoryTokenManager)Application["GoogleTokenManager"];
+                if (tokenManager == null)
+                {
+                    string consumerKey = ConfigurationManager.AppSettings["googleConsumerKey"];
+                    string consumerSecret = ConfigurationManager.AppSettings["googleConsumerSecret"];
+                    if (!string.IsNullOrEmpty(consumerKey))
+                    {
+                        tokenManager = new InMemoryTokenManager(consumerKey, consumerSecret);
+                        Application["GoogleTokenManager"] = tokenManager;
+                    }
+                }
+
+                return tokenManager;
             }
         }
     }

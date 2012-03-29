@@ -266,4 +266,24 @@ dl.form dt span
 }
 
 
+.boxed-group h2
+{
+    padding: 10px 10px 11px 10px;
+    font-size: 20px;
+    text-shadow: 0 1px 0 #D8D8D8;
+    font-weight: bold;
+    font-family: Helvetica,arial,freesans,clean,sans-serif;
+}
+
+.boxed-group a
+{
+    padding: 10px 10px 11px 10px;
+    font-size: 20px;
+    text-shadow: 0 1px 0 #D8D8D8;
+    font-weight: bold;
+    font-family: Helvetica,arial,freesans,clean,sans-serif;
+    text-decoration: none;
+}
+
+
 
