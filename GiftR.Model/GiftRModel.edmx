@@ -31,6 +31,7 @@
           <Property Name="title" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="verificacion_code" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="site_type" Type="int" Nullable="false" />
+          <Property Name="flickr_username" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="SitesOwners">
           <Key>
@@ -47,6 +48,7 @@
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="default_page" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="css" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -128,6 +130,7 @@
           <Property Name="site_type" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SitesTypes" Relationship="GiftR.Model.FK_Sites_SitesTypes" FromRole="Sites" ToRole="SitesTypes" />
           <NavigationProperty Name="SitesOwners" Relationship="GiftR.Model.FK_SitesOwners_Sites" FromRole="Sites" ToRole="SitesOwners" />
+          <Property Type="String" Name="flickr_username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SitesOwners">
           <Key>
@@ -147,6 +150,7 @@
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="default_page" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Sites" Relationship="GiftR.Model.FK_Sites_SitesTypes" FromRole="SitesTypes" ToRole="Sites" />
+          <Property Type="String" Name="css" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -204,7 +208,8 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GiftRModelStoreContainer" CdmEntityContainer="GiftRModel">
           <EntitySetMapping Name="Sites"><EntityTypeMapping TypeName="GiftR.Model.Sites"><MappingFragment StoreEntitySet="Sites">
-            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="flickr_username" ColumnName="flickr_username" />
+                <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="title" ColumnName="title" />
             <ScalarProperty Name="verificacion_code" ColumnName="verificacion_code" />
             <ScalarProperty Name="site_type" ColumnName="site_type" />
@@ -215,7 +220,8 @@
             <ScalarProperty Name="user_id" ColumnName="user_id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="SitesTypes"><EntityTypeMapping TypeName="GiftR.Model.SitesTypes"><MappingFragment StoreEntitySet="SitesTypes">
-            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="css" ColumnName="css" />
+                <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="name" ColumnName="name" />
             <ScalarProperty Name="default_page" ColumnName="default_page" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>

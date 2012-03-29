@@ -196,13 +196,15 @@ namespace GiftR.Model
         /// <param name="title">Initial value of the title property.</param>
         /// <param name="verificacion_code">Initial value of the verificacion_code property.</param>
         /// <param name="site_type">Initial value of the site_type property.</param>
-        public static Sites CreateSites(global::System.Int32 id, global::System.String title, global::System.String verificacion_code, global::System.Int32 site_type)
+        /// <param name="flickr_username">Initial value of the flickr_username property.</param>
+        public static Sites CreateSites(global::System.Int32 id, global::System.String title, global::System.String verificacion_code, global::System.Int32 site_type, global::System.String flickr_username)
         {
             Sites sites = new Sites();
             sites.id = id;
             sites.title = title;
             sites.verificacion_code = verificacion_code;
             sites.site_type = site_type;
+            sites.flickr_username = flickr_username;
             return sites;
         }
 
@@ -307,6 +309,30 @@ namespace GiftR.Model
         private global::System.Int32 _site_type;
         partial void Onsite_typeChanging(global::System.Int32 value);
         partial void Onsite_typeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String flickr_username
+        {
+            get
+            {
+                return _flickr_username;
+            }
+            set
+            {
+                Onflickr_usernameChanging(value);
+                ReportPropertyChanging("flickr_username");
+                _flickr_username = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("flickr_username");
+                Onflickr_usernameChanged();
+            }
+        }
+        private global::System.String _flickr_username;
+        partial void Onflickr_usernameChanging(global::System.String value);
+        partial void Onflickr_usernameChanged();
 
         #endregion
     
@@ -663,6 +689,30 @@ namespace GiftR.Model
         private global::System.String _default_page;
         partial void Ondefault_pageChanging(global::System.String value);
         partial void Ondefault_pageChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String css
+        {
+            get
+            {
+                return _css;
+            }
+            set
+            {
+                OncssChanging(value);
+                ReportPropertyChanging("css");
+                _css = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("css");
+                OncssChanged();
+            }
+        }
+        private global::System.String _css;
+        partial void OncssChanging(global::System.String value);
+        partial void OncssChanged();
 
         #endregion
     

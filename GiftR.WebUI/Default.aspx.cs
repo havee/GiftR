@@ -23,37 +23,27 @@ using GiftR.Common;
 using GiftR.Repository;
 
 using GiftR.WebUI.Code;
+using GiftR.Model;
 
 namespace GiftR.WebUI
 {
-    public partial class Main : Page
-    {
-        public class Image
-        {
-            public string Src { get; set; }
-
-            public string Alt { get; set; }
-
-            public string Title { get; set; }
-
-            public string Id { get; set; }
-        }           
-
+    public partial class Default : Page
+    {        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 FacebookGraph fbUser;
-                if (SessionManager.IsAuthenticated(out fbUser))
+                if (StateManager.IsAuthenticated(out fbUser))
                 {
                     UsersRepository usersRepo = new UsersRepository();
                     var user = UsersManager.ConvertFacebookUser(fbUser);
                     if (! usersRepo.Exists(user))
                     {
-                        usersRepo.SaveUser(user);
+                        usersRepo.Save(user);
                     }
 
-                    Response.RedirectWithQueryString("Polaroid.aspx");
+                    GetSite();
                 }
                 else
                 {
@@ -62,13 +52,25 @@ namespace GiftR.WebUI
             }
         }
 
+        private void GetSite()
+        {
+            if (Request.QueryString["icode"] != null)
+            {
+                var sitesRepo = new SitesRepository();
+                Sites site;
+                if (sitesRepo.Exists(Request.QueryString["icode"], out site))
+                {
+                    StateManager.AddSite(site);
+                    Response.RedirectWithQueryString(site.SitesTypes.default_page);
+                }
+            }
+        }
+
         void Photos_OnError(ProviderException providerException)
         {
             throw new NotImplementedException();
         }        
 
-        protected void signInButton_Click(object sender, ImageClickEventArgs e)
-        {      
-        }
+
     }
 }

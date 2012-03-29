@@ -6,13 +6,11 @@ using GiftR.Model;
 
 namespace GiftR.Repository
 {
-    public class UsersRepository : IDisposable
+    public class UsersRepository : BaseRepository
     {
-        GiftRModel db;
-
-        public UsersRepository()
+        public UsersRepository() 
+            : base()
         {
-            db = new GiftRModel();
         }
 
         public List<Users> GetUsers()
@@ -31,16 +29,29 @@ namespace GiftR.Repository
             return query.Count() > 0;
         }
 
-        public Users SaveUser(Users user)
+        public Users GetUserByExternalId(long externalId)
         {
-            db.Users.AddObject(user);
+            var query = from p in db.Users
+                        where p.userid == externalId
+                        select p;
+
+            return query.Count() > 0 ? query.First() : null;
+        }
+
+        public Users Save(Users user)
+        {
+            if (user.EntityState == System.Data.EntityState.Added)
+            {
+                db.Users.AddObject(user);
+            }
             db.SaveChanges();
 
             return user;
         }
 
-        public void Dispose()
+        public void SaveChanges()
         {
+            db.SaveChanges();
         }
     }
 }

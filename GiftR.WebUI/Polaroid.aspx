@@ -3,8 +3,8 @@
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title>Polaroid</title>
+<head runat="server">
+    <title>GiftR</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="Polaroid Photobar Gallery" />
     <meta name="keywords" content="polaroid, jquery, css3, rotation, image gallery" />
@@ -106,7 +106,7 @@
 						  .stop()
 						  .animate({ 'rotate': r + 'deg' }, 300);
 
-						  $back.stop().animate({ 'left': '0px' }, 300);
+						      $back.stop().animate({ 'left': '0px' }, 300);
 						  });
             }
 
@@ -352,6 +352,9 @@
     <h1>
         <asp:Label runat="server" ID="lblTitle"></asp:Label></h1>
     <asp:Label runat="server" ID="loggedInName" CssClass="roundButton"></asp:Label>
+    <a id="ribbon" href="SitesCreate.aspx" target="_blank">
+        <img alt="" src="Images/corner-ribbon.png" width="170" height="170" />
+    </a>
     <asp:HiddenField ID="activePhoto" runat="server" />
     <asp:ScriptManager runat="server">
     </asp:ScriptManager>

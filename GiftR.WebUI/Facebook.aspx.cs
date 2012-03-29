@@ -26,8 +26,8 @@
 					using (var responseStream = response.GetResponseStream()) {
 						var graph = FacebookGraph.Deserialize(responseStream);
 
-                        SessionManager.SetUser(graph);
-                        Response.RedirectWithQueryString("Main.aspx");
+                        StateManager.SetUser(graph);
+                        Response.RedirectWithQueryString("Default.aspx");
 					}
 				}
 			}

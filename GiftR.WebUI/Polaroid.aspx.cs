@@ -44,32 +44,49 @@ namespace GiftR.WebUI
             if (!IsPostBack)
             {
                 FacebookGraph fbUser;
-                if (!SessionManager.IsAuthenticated(out fbUser))
+                if (!StateManager.IsAuthenticated(out fbUser))
                 {
                     Response.RedirectWithQueryString("Facebook.aspx");
                 }
 
-                loggedInName.Text = "Bienvenido, " + fbUser.Name;
+                loggedInName.Text = "Bienvenido, " + fbUser.Name;                
 
-                FlickrContext context = new FlickrContext();
-                context.Photos.OnError += new Query<Photo>.ErrorHandler(Photos_OnError);
+                if (Request.QueryString["icode"] != null)
+                {
+                    var site = StateManager.GetSite(Request.QueryString["icode"]);
+                    if (site != null)
+                    {
+                        this.Title = site.title;
 
-                var bigs = (from ph in context.Photos
-                            where ph.User == "havee1983" 
-                            && ph.PhotoSize == PhotoSize.Default
-                            select ph).ToList();
+                        FlickrContext context = new FlickrContext();
+                        context.Photos.OnError += new Query<Photo>.ErrorHandler(Photos_OnError);
 
-                var thumbs = (from ph in context.Photos
-                           where ph.User == "havee1983"
-                           && ph.PhotoSize == PhotoSize.Thumbnail
-                           select ph).ToList();
+                        var bigs = (from ph in context.Photos
+                                    where ph.User == site.flickr_username
+                                    && ph.PhotoSize == PhotoSize.Default
+                                    select ph).ToList();
 
-                var query = from b in bigs
-                            join t in thumbs on b.Id equals t.Id
-                            select new Image() { Src = t.Url, Alt = b.Url, Id = t.Id, Title = t.Title };
-                
-                rptAlbum.DataSource = query.ToList();
-                rptAlbum.DataBind();
+                        var thumbs = (from ph in context.Photos
+                                      where ph.User == site.flickr_username
+                                      && ph.PhotoSize == PhotoSize.Thumbnail
+                                      select ph).ToList();
+
+                        var query = from b in bigs
+                                    join t in thumbs on b.Id equals t.Id
+                                    select new Image() { Src = t.Url, Alt = b.Url, Id = t.Id, Title = t.Title };
+
+                        rptAlbum.DataSource = query.ToList();
+                        rptAlbum.DataBind();
+                    }
+                    else
+                    {
+                        Response.RedirectWithQueryString("Error.aspx");
+                    }
+                }
+                else
+                {
+                    Response.RedirectWithQueryString("Error.aspx");
+                }
             }
         }
 

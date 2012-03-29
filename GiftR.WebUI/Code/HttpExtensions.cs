@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Configuration;
 
 namespace GiftR.WebUI.Code
 {
@@ -15,6 +16,14 @@ namespace GiftR.WebUI.Code
             var qs = server.UrlEncode(request.QueryString.ToString());
 
             response.Redirect(url + "?" + server.UrlDecode(qs));
+        }
+
+
+        public static Uri GetDefaultPageUrl()
+        {
+            var url = ConfigurationManager.AppSettings["baseUrl"] + ConfigurationManager.AppSettings["defaultPage"];
+
+            return new Uri(url);            
         }
     }
 }
