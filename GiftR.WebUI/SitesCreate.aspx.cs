@@ -12,6 +12,7 @@ using GiftR.WebUI.Code;
 using DotNetOpenAuth.ApplicationBlock;
 using System.Configuration;
 using DotNetOpenAuth.OAuth;
+using GiftR.Services;
 
 namespace GiftR.WebUI
 {
@@ -32,14 +33,9 @@ namespace GiftR.WebUI
             FacebookGraph fbUser;
             if (StateManager.IsAuthenticated(out fbUser))
             {
-                var usersRepo = new UsersRepository();
-                var user = usersRepo.GetUserByExternalId(fbUser.Id);
+                var user = UsersService.GetUserByExternalId(fbUser.Id);
                 if (user != null)
                 {
-                    user.email = txtEmail.Text;
-                    usersRepo.SaveChanges();
-
-                    SitesRepository sitesRepo = new SitesRepository();
                     var code = Guid.NewGuid().ToString();
                     var site = new Sites()
                     {
@@ -48,13 +44,13 @@ namespace GiftR.WebUI
                         site_type = Convert.ToInt32(txtType.Text),
                         verificacion_code = code
                     };
-                    sitesRepo.Save(site);
+                    SitesService.Save(user.id, txtEmail.Text, site);
 
                     this.pnlForm.Visible = false;
                     this.pnlMsg.Visible = true;
                     this.lblMsg.Text = "El sitio se ha creado satisfactoriamente, accedé ya al mismo:";
 
-                    var shortUrl = GoogleConsumer.ShortenUrl(HttpExtensions.GetDefaultPageUrl().OriginalString + "?icode=" + code);
+                    var shortUrl = GoogleConsumer.ShortenUrl(PageFlowExtensions.GetDefaultPageUrl().OriginalString + "?icode=" + code);
 
                     this.hlLink.NavigateUrl = shortUrl;
                     this.hlLink.Text = shortUrl;

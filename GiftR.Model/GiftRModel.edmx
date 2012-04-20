@@ -40,6 +40,7 @@
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="site_id" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="SitesTypes">
           <Key>
@@ -141,6 +142,7 @@
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Sites" Relationship="GiftR.Model.FK_SitesOwners_Sites" FromRole="SitesOwners" ToRole="Sites" />
           <NavigationProperty Name="Users" Relationship="GiftR.Model.FK_SitesOwners_Users" FromRole="SitesOwners" ToRole="Users" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SitesTypes">
           <Key>
@@ -215,7 +217,8 @@
             <ScalarProperty Name="site_type" ColumnName="site_type" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="SitesOwners"><EntityTypeMapping TypeName="GiftR.Model.SitesOwners"><MappingFragment StoreEntitySet="SitesOwners">
-            <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="site_id" ColumnName="site_id" />
             <ScalarProperty Name="user_id" ColumnName="user_id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>

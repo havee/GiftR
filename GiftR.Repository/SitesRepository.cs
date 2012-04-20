@@ -34,9 +34,16 @@ namespace GiftR.Repository
             return query.Count() > 0;
         }
 
-        public Sites Save(Sites site)
+        public Sites Save(int userid, string email, Sites site)
         {
             db.Sites.AddObject(site);
+            db.SitesOwners.AddObject(new SitesOwners()
+            {
+                Sites = site,
+                user_id = userid,
+                email = email
+            });
+
             db.SaveChanges();
 
             return site;

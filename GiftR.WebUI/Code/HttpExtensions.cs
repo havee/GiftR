@@ -19,11 +19,6 @@ namespace GiftR.WebUI.Code
         }
 
 
-        public static Uri GetDefaultPageUrl()
-        {
-            var url = ConfigurationManager.AppSettings["baseUrl"] + ConfigurationManager.AppSettings["defaultPage"];
-
-            return new Uri(url);            
-        }
+        
     }
 }

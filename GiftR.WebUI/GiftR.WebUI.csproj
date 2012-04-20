@@ -120,6 +120,7 @@
       <Link>Code\InMemoryTokenManager.cs</Link>
     </Compile>
     <Compile Include="Code\HttpExtensions.cs" />
+    <Compile Include="Code\PageFlowExtensions.cs" />
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -191,6 +192,10 @@
     <ProjectReference Include="..\GiftR.Repository\GiftR.Repository.csproj">
       <Project>{8792EB67-B33F-40AC-9885-7C3B106C8260}</Project>
       <Name>GiftR.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GiftR.Services\GiftR.Services.csproj">
+      <Project>{77433633-5309-4EEA-A56C-29C48A90CAA1}</Project>
+      <Name>GiftR.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Linq.Flickr\Linq.Flickr.csproj">
       <Project>{716F1EDD-B85E-45FB-B757-BFFC8CB2A011}</Project>

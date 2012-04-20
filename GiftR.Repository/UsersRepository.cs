@@ -22,8 +22,13 @@ namespace GiftR.Repository
 
         public bool Exists(Users user)
         {
+            return Exists(user.id);
+        }
+
+        public bool Exists(long id)
+        {
             var query = from p in db.Users
-                        where user.userid == p.userid
+                        where id == p.userid
                         select p.id;
 
             return query.Count() > 0;

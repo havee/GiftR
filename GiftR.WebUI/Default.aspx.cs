@@ -19,11 +19,12 @@ using Linq.Flickr.Proxies;
 using Linq.Flickr.Repository.Abstraction;
 using System.Text;
 using DotNetOpenAuth.ApplicationBlock.Facebook;
+
 using GiftR.Common;
 using GiftR.Repository;
-
 using GiftR.WebUI.Code;
 using GiftR.Model;
+using GiftR.Services;
 
 namespace GiftR.WebUI
 {
@@ -36,11 +37,10 @@ namespace GiftR.WebUI
                 FacebookGraph fbUser;
                 if (StateManager.IsAuthenticated(out fbUser))
                 {
-                    UsersRepository usersRepo = new UsersRepository();
                     var user = UsersManager.ConvertFacebookUser(fbUser);
-                    if (! usersRepo.Exists(user))
+                    if (! UsersService.Exists(user.id))
                     {
-                        usersRepo.Save(user);
+                        UsersService.Save(user);
                     }
 
                     GetSite();
@@ -56,13 +56,16 @@ namespace GiftR.WebUI
         {
             if (Request.QueryString["icode"] != null)
             {
-                var sitesRepo = new SitesRepository();
-                Sites site;
-                if (sitesRepo.Exists(Request.QueryString["icode"], out site))
+                var site = SitesService.GetSiteByCode(Request.QueryString["icode"]);
+                if (site != null)
                 {
                     StateManager.AddSite(site);
                     Response.RedirectWithQueryString(site.SitesTypes.default_page);
                 }
+            }
+            else
+            {
+                Response.RedirectWithQueryString(PageFlowExtensions.GetCreateSitePageUrl().AbsoluteUri);
             }
         }
 

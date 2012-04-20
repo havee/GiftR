@@ -417,12 +417,14 @@ namespace GiftR.Model
         /// <param name="id">Initial value of the id property.</param>
         /// <param name="site_id">Initial value of the site_id property.</param>
         /// <param name="user_id">Initial value of the user_id property.</param>
-        public static SitesOwners CreateSitesOwners(global::System.Int32 id, global::System.Int32 site_id, global::System.Int32 user_id)
+        /// <param name="email">Initial value of the email property.</param>
+        public static SitesOwners CreateSitesOwners(global::System.Int32 id, global::System.Int32 site_id, global::System.Int32 user_id, global::System.String email)
         {
             SitesOwners sitesOwners = new SitesOwners();
             sitesOwners.id = id;
             sitesOwners.site_id = site_id;
             sitesOwners.user_id = user_id;
+            sitesOwners.email = email;
             return sitesOwners;
         }
 
@@ -503,6 +505,30 @@ namespace GiftR.Model
         private global::System.Int32 _user_id;
         partial void Onuser_idChanging(global::System.Int32 value);
         partial void Onuser_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                OnemailChanging(value);
+                ReportPropertyChanging("email");
+                _email = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("email");
+                OnemailChanged();
+            }
+        }
+        private global::System.String _email;
+        partial void OnemailChanging(global::System.String value);
+        partial void OnemailChanged();
 
         #endregion
     
