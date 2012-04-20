@@ -57,25 +57,5 @@ namespace GiftR.WebUI
                 }            
             }
         }
-
-        private InMemoryTokenManager TokenManager
-        {
-            get
-            {
-                var tokenManager = (InMemoryTokenManager)Application["GoogleTokenManager"];
-                if (tokenManager == null)
-                {
-                    string consumerKey = ConfigurationManager.AppSettings["googleConsumerKey"];
-                    string consumerSecret = ConfigurationManager.AppSettings["googleConsumerSecret"];
-                    if (!string.IsNullOrEmpty(consumerKey))
-                    {
-                        tokenManager = new InMemoryTokenManager(consumerKey, consumerSecret);
-                        Application["GoogleTokenManager"] = tokenManager;
-                    }
-                }
-
-                return tokenManager;
-            }
-        }
     }
 }

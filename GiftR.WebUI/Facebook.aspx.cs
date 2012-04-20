@@ -27,7 +27,7 @@
 						var graph = FacebookGraph.Deserialize(responseStream);
 
                         StateManager.SetUser(graph);
-                        Response.RedirectWithQueryString("Default.aspx");
+                        Response.RedirectWithQueryString(PageFlowExtensions.GetDefaultPageUrl().AbsoluteUri);
 					}
 				}
 			}

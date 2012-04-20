@@ -78,6 +78,7 @@
     </Content>
     <Content Include="Error.aspx" />
     <Content Include="images\corner-ribbon.png" />
+    <Content Include="MySites.aspx" />
     <Content Include="Polaroid.aspx" />
     <Content Include="Css\style.css" />
     <Content Include="Facebook.aspx" />
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MySites.aspx.cs">
+      <DependentUpon>MySites.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MySites.aspx.designer.cs">
+      <DependentUpon>MySites.aspx</DependentUpon>
     </Compile>
     <Compile Include="Polaroid.aspx.cs">
       <DependentUpon>Polaroid.aspx</DependentUpon>
