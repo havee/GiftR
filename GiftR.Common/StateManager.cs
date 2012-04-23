@@ -74,12 +74,12 @@ namespace GiftR.Common
         public static void AddSite(Sites site)
         {
             var sites = Sites;
-            if (sites.ContainsKey(site.verificacion_code))
+            if (sites.ContainsKey(site.verification_code))
             {
-                sites.Remove(site.verificacion_code);
+                sites.Remove(site.verification_code);
             }
 
-            sites.Add(site.verificacion_code, site);
+            sites.Add(site.verification_code, site);
         }
 
         public static Sites GetSite(string code)

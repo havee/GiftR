@@ -20,15 +20,17 @@
                     <ItemTemplate>
                         <tr>
                             <td class="title">
-                                Sitio Title
+                                <%# Eval("title").ToString().Trim() %>
                             </td>
                             <td rowspan="2">
-                                <a href="" class="minibutton">Eliminar</a>
+                                <asp:Button runat="server" ID="btnDelete" class="minibutton" Text="Eliminar" OnCommand="btnDelete_Command"
+                                    CommandArgument='<%# Eval("id") %>' />
                             </td>
                         </tr>
                         <tr class="desc">
                             <td>
-                                Descripcion
+                                <a href="<%# GetSiteUrl(Eval("verification_code").ToString()).Trim() %>">
+                                    <%# GetSiteUrl(Eval("verification_code").ToString()).Trim() %></a>
                             </td>
                         </tr>
                         <tr class="sep">

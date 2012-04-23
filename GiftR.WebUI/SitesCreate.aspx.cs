@@ -42,7 +42,7 @@ namespace GiftR.WebUI
                         flickr_username = txtFlickrUsername.Text,
                         title = txtTitle.Text,
                         site_type = Convert.ToInt32(txtType.Text),
-                        verificacion_code = code
+                        verification_code = code
                     };
                     SitesService.Save(user.id, txtEmail.Text, site);
 

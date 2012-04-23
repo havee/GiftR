@@ -194,17 +194,19 @@ namespace GiftR.Model
         /// </summary>
         /// <param name="id">Initial value of the id property.</param>
         /// <param name="title">Initial value of the title property.</param>
-        /// <param name="verificacion_code">Initial value of the verificacion_code property.</param>
         /// <param name="site_type">Initial value of the site_type property.</param>
         /// <param name="flickr_username">Initial value of the flickr_username property.</param>
-        public static Sites CreateSites(global::System.Int32 id, global::System.String title, global::System.String verificacion_code, global::System.Int32 site_type, global::System.String flickr_username)
+        /// <param name="verification_code">Initial value of the verification_code property.</param>
+        /// <param name="date_created">Initial value of the date_created property.</param>
+        public static Sites CreateSites(global::System.Int32 id, global::System.String title, global::System.Int32 site_type, global::System.String flickr_username, global::System.String verification_code, global::System.DateTime date_created)
         {
             Sites sites = new Sites();
             sites.id = id;
             sites.title = title;
-            sites.verificacion_code = verificacion_code;
             sites.site_type = site_type;
             sites.flickr_username = flickr_username;
+            sites.verification_code = verification_code;
+            sites.date_created = date_created;
             return sites;
         }
 
@@ -267,30 +269,6 @@ namespace GiftR.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String verificacion_code
-        {
-            get
-            {
-                return _verificacion_code;
-            }
-            set
-            {
-                Onverificacion_codeChanging(value);
-                ReportPropertyChanging("verificacion_code");
-                _verificacion_code = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("verificacion_code");
-                Onverificacion_codeChanged();
-            }
-        }
-        private global::System.String _verificacion_code;
-        partial void Onverificacion_codeChanging(global::System.String value);
-        partial void Onverificacion_codeChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
         public global::System.Int32 site_type
         {
             get
@@ -333,6 +311,54 @@ namespace GiftR.Model
         private global::System.String _flickr_username;
         partial void Onflickr_usernameChanging(global::System.String value);
         partial void Onflickr_usernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String verification_code
+        {
+            get
+            {
+                return _verification_code;
+            }
+            set
+            {
+                Onverification_codeChanging(value);
+                ReportPropertyChanging("verification_code");
+                _verification_code = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("verification_code");
+                Onverification_codeChanged();
+            }
+        }
+        private global::System.String _verification_code;
+        partial void Onverification_codeChanging(global::System.String value);
+        partial void Onverification_codeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime date_created
+        {
+            get
+            {
+                return _date_created;
+            }
+            set
+            {
+                Ondate_createdChanging(value);
+                ReportPropertyChanging("date_created");
+                _date_created = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("date_created");
+                Ondate_createdChanged();
+            }
+        }
+        private global::System.DateTime _date_created;
+        partial void Ondate_createdChanging(global::System.DateTime value);
+        partial void Ondate_createdChanged();
 
         #endregion
     

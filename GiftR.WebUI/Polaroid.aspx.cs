@@ -92,7 +92,7 @@ namespace GiftR.WebUI
 
         void Photos_OnError(ProviderException providerException)
         {
-            throw new NotImplementedException();
+            Logging.Logger.Error(providerException.Message, providerException);
         }    
     }
 }

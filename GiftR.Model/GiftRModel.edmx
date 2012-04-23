@@ -29,9 +29,10 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="verificacion_code" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="verification_code" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="site_type" Type="int" Nullable="false" />
           <Property Name="flickr_username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="date_created" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="SitesOwners">
           <Key>
@@ -127,11 +128,12 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="verificacion_code" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="site_type" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SitesTypes" Relationship="GiftR.Model.FK_Sites_SitesTypes" FromRole="Sites" ToRole="SitesTypes" />
           <NavigationProperty Name="SitesOwners" Relationship="GiftR.Model.FK_SitesOwners_Sites" FromRole="Sites" ToRole="SitesOwners" />
           <Property Type="String" Name="flickr_username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="verification_code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="date_created" Nullable="false" />
         </EntityType>
         <EntityType Name="SitesOwners">
           <Key>
@@ -210,10 +212,11 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GiftRModelStoreContainer" CdmEntityContainer="GiftRModel">
           <EntitySetMapping Name="Sites"><EntityTypeMapping TypeName="GiftR.Model.Sites"><MappingFragment StoreEntitySet="Sites">
-            <ScalarProperty Name="flickr_username" ColumnName="flickr_username" />
+            <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="verification_code" ColumnName="verification_code" />
+                <ScalarProperty Name="flickr_username" ColumnName="flickr_username" />
                 <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="title" ColumnName="title" />
-            <ScalarProperty Name="verificacion_code" ColumnName="verificacion_code" />
             <ScalarProperty Name="site_type" ColumnName="site_type" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="SitesOwners"><EntityTypeMapping TypeName="GiftR.Model.SitesOwners"><MappingFragment StoreEntitySet="SitesOwners">
@@ -258,17 +261,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="GiftRModel">
-        <EntityTypeShape EntityType="GiftR.Model.Sites" Width="1.5" PointX="3" PointY="0.875" Height="2.1725878906250005" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiftR.Model.Sites" Width="1.5" PointX="3" PointY="0.875" Height="2.5571907552083339" IsExpanded="true" />
         <EntityTypeShape EntityType="GiftR.Model.SitesOwners" Width="1.5" PointX="5.25" PointY="1" Height="1.9802864583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="GiftR.Model.SitesTypes" Width="1.5" PointX="0.75" PointY="1.125" Height="1.7879850260416665" IsExpanded="true" />
         <EntityTypeShape EntityType="GiftR.Model.Users" Width="1.5" PointX="7.875" PointY="1.5" Height="2.5571907552083317" IsExpanded="true" />
         <AssociationConnector Association="GiftR.Model.FK_Sites_SitesTypes" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.25" PointY="2.0189925130208333" />
-          <ConnectorPoint PointX="3" PointY="2.0189925130208333" />
+          <ConnectorPoint PointX="2.25" PointY="2.1151432291666667" />
+          <ConnectorPoint PointX="3" PointY="2.1151432291666667" />
         </AssociationConnector>
         <AssociationConnector Association="GiftR.Model.FK_SitesOwners_Sites" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="1.9901432291666668" />
-          <ConnectorPoint PointX="5.25" PointY="1.9901432291666668" />
+          <ConnectorPoint PointX="4.5" PointY="2.0862939453125" />
+          <ConnectorPoint PointX="5.25" PointY="2.0862939453125" />
         </AssociationConnector>
         <AssociationConnector Association="GiftR.Model.FK_SitesOwners_Users" ManuallyRouted="false">
           <ConnectorPoint PointX="7.875" PointY="2.2401432291666667" />

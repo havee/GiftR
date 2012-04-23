@@ -16,7 +16,7 @@ namespace GiftR.Repository
         public Sites GetSiteByCode(string code)
         {
             var query = from p in db.Sites
-                        where p.verificacion_code == code
+                        where p.verification_code == code
                         select p;
 
             return query.First();
@@ -26,7 +26,19 @@ namespace GiftR.Repository
         {
             site = null;
             var query = from p in db.Sites
-                        where p.verificacion_code == code
+                        where p.verification_code == code
+                        select p;
+
+            if (query != null) site = query.First();
+
+            return query.Count() > 0;
+        }
+
+        public bool Exists(int siteId, out Sites site)
+        {
+            site = null;
+            var query = from p in db.Sites
+                        where p.id == siteId
                         select p;
 
             if (query != null) site = query.First();
@@ -36,6 +48,8 @@ namespace GiftR.Repository
 
         public Sites Save(int userid, string email, Sites site)
         {
+            site.date_created = DateTime.Now;
+
             db.Sites.AddObject(site);
             db.SitesOwners.AddObject(new SitesOwners()
             {
@@ -52,6 +66,35 @@ namespace GiftR.Repository
         public void SaveChanges()
         {
             db.SaveChanges();
+        }
+
+        public List<Sites> GetSiteByUserId(long userId)
+        {
+            var query = from p in db.SitesOwners
+                        where p.Users.userid == userId
+                        select p.Sites;
+
+            return query.ToList();
+        }
+
+        public void DeleteSite(int siteId)
+        {
+            Sites site = null;
+            if (Exists(siteId, out site))
+            {
+                var siteOwners = from p in db.SitesOwners
+                                 where p.site_id == siteId
+                                 select p;
+
+                foreach (var siteOwner in siteOwners)
+                {
+                    db.DeleteObject(siteOwner);
+                }
+
+                db.DeleteObject(site);
+
+                db.SaveChanges();
+            }
         }
     }
 }

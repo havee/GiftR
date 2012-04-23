@@ -21,5 +21,12 @@ namespace GiftR.WebUI.Code
 
             return new Uri(url);
         }
+
+        public static Uri GetErrorPageUrl()
+        {
+            var url = ConfigurationManager.AppSettings["baseUrl"] + ConfigurationManager.AppSettings["errorPage"];
+
+            return new Uri(url);
+        }
     }
 }
