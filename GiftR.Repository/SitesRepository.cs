@@ -29,7 +29,7 @@ namespace GiftR.Repository
                         where p.verification_code == code
                         select p;
 
-            if (query != null) site = query.First();
+            if (query != null) site = query.FirstOrDefault();
 
             return query.Count() > 0;
         }
