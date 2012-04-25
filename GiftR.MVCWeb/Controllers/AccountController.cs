@@ -181,15 +181,23 @@ namespace GiftR.MVCWeb.Controllers
             }
             else
             {
-                var request = WebRequest.Create("https://graph.facebook.com/me?access_token=" + Uri.EscapeDataString(authorization.AccessToken));
-                using (var response = request.GetResponse())
+                try
                 {
-                    using (var responseStream = response.GetResponseStream())
+                    var request = WebRequest.Create("https://graph.facebook.com/me?access_token=" + Uri.EscapeDataString(authorization.AccessToken));
+                    using (var response = request.GetResponse())
                     {
-                        fbUser = FacebookGraph.Deserialize(responseStream);
+                        using (var responseStream = response.GetResponseStream())
+                        {
+                            fbUser = FacebookGraph.Deserialize(responseStream);
 
-                        return true;
+                            return true;
+                        }
                     }
+                }
+                catch (Exception ex)
+                {
+                    fbUser = null;
+                    return false;
                 }
             }
 

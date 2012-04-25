@@ -9,9 +9,18 @@
             <span id="lblMsg">@ViewBag.Msg</span>
             <br />
             <br />
-            <a href="@ViewBag.Url" target=_blank>@ViewBag.Url</a> 
-            
+            <a href="@ViewBag.Url" target="_blank">@ViewBag.Url</a>
         </h2>
+        <br />
+        <div style="float:right; margin-bottom:100px">
+        <a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php" share_url="@ViewBag.Url">
+            Compartir</a>
+        <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
+        </script>
+        
+        </div>
+        <br />
+        <br />
+
     </center>
-    <br />
 </div>
