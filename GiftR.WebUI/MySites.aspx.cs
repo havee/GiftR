@@ -22,7 +22,7 @@ namespace GiftR.WebUI
 
         private void BindSites()
         {
-            rptSites.DataSource = SitesService.GetSiteByUserId(StateManager.GetCurrentUser().Id);
+            // rptSites.DataSource = SitesService.GetSiteByUserId(StateManager.GetCurrentUser());
             rptSites.DataBind();
         }
 

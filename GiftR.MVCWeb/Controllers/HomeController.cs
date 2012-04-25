@@ -14,48 +14,26 @@ using DotNetOpenAuth.OAuth2;
 
 namespace GiftR.MVCWeb.Controllers
 {
+    [Authorize()]
     public class HomeController : Controller
     {
-        private static readonly FacebookClient client = new FacebookClient
-        {
-            ClientIdentifier = ConfigurationManager.AppSettings["facebookAppID"],
-            ClientSecret = ConfigurationManager.AppSettings["facebookAppSecret"],
-        };
-
         public void Index(string icode)
         {
-            FacebookGraph fbUser;
-            if (StateManager.IsAuthenticated(out fbUser))
+            if (!String.IsNullOrEmpty(icode))
             {
-                var user = UsersManager.ConvertFacebookUser(fbUser);
-                if (!UsersService.Exists(user.id))
+                var site = SitesService.GetSiteByCode(icode);
+                if (site != null)
                 {
-                    UsersService.Save(user);
-                }
+                    StateManager.AddSite(site);
 
-                if (! String.IsNullOrEmpty(icode))
-                {
-                    var site = SitesService.GetSiteByCode(icode);
-                    if (site != null)
-                    {
-                        StateManager.AddSite(site);
-
-                        ViewSite(site.SitesTypes.default_page);
-                    }
-                }
-                else
-                {
-                    CreateSite();
+                    ViewSite(site.SitesTypes.default_page);
                 }
             }
             else
             {
-                if (Facebook())
-                {
-                    Index(icode);
-                }
-            }  
-        } 
+                CreateSite();
+            }
+        }
 
         public void ViewSite(string page)
         {
@@ -69,31 +47,6 @@ namespace GiftR.MVCWeb.Controllers
             return View();
         }
 
-        public bool Facebook()
-        {
-            IAuthorizationState authorization = client.ProcessUserAuthorization();
-            if (authorization == null)
-            {
-                // Kick off authorization request
-                client.RequestUserAuthorization();
-            }
-            else
-            {
-                var request = WebRequest.Create("https://graph.facebook.com/me?access_token=" + Uri.EscapeDataString(authorization.AccessToken));
-                using (var response = request.GetResponse())
-                {
-                    using (var responseStream = response.GetResponseStream())
-                    {
-                        var graph = FacebookGraph.Deserialize(responseStream);
-
-                        StateManager.SetUser(graph);
-
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
+        
     }
 }

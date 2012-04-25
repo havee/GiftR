@@ -5,12 +5,14 @@ using System.Text;
 using System.Web;
 using DotNetOpenAuth.ApplicationBlock.Facebook;
 using GiftR.Model;
+using System.Web.Security;
 
 namespace GiftR.Common
 {
     public class StateManager
     {
         private const string _facebook_session_key = "__facebook_session__key";
+        private const string _modeluser_session_key = "__modeluser_session__key";
         private const string _application_sites_key = "__application_sites__key";
 
         private static HttpContext Context
@@ -23,22 +25,12 @@ namespace GiftR.Common
             }
         }
 
-        public static void SetUser(FacebookGraph user)
+        public static string GetCurrentUser()
         {
-            if (HttpContext.Current != null)
-            {
-                HttpContext.Current.Session.Add(_facebook_session_key, user);
-            }
-        }
+            var identity = (FormsIdentity)HttpContext.Current.User.Identity;
+            var userdata = identity.Ticket.UserData;
 
-        public static FacebookGraph GetCurrentUser()
-        {
-            if (Context.Session[_facebook_session_key] != null)
-            {
-                return (FacebookGraph)Context.Session[_facebook_session_key];
-            }            
-
-            return null;
+            return userdata;
         }
 
         public static bool IsAuthenticated(out FacebookGraph user)

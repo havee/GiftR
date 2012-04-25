@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Polaroid</title>
+    <title>@ViewBag.Title</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="Polaroid Photobar Gallery" />
     <meta name="keywords" content="polaroid, jquery, css3, rotation, image gallery" />
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../../Content/Style.css" type="text/css" media="screen" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script src="../../Scripts/cufon-yui.js" type="text/javascript"></script>
-    <script src="@VirtualPathUtility.ToAbsolute("/Scripts/Note_this_400.font.js")" type="text/javascript"></script>
+    <script src="../../Scripts/Note_this_400.font.js" type="text/javascript"></script>
     <script type="text/javascript" src="../../Scripts/jquery.transform-0.8.0.min.js"></script>
     <script type="text/javascript">
 
@@ -350,10 +350,14 @@
     </script>
 </head>
 <body>
-    <h1>
-    </h1>
+<h1>
+        </h1>
+    <span ID="loggedInName" class="roundButton">Bienvenido, @User.Identity.Name</span>
+    <a id="ribbon" href="../../Sites/Create" target="_blank">
+        <img alt="" src="../../images/corner-ribbon.png" width="170" height="170" />
+    </a>
 
-    <input type=hidden id="activePhoto" runat="server" />
+    <input type="hidden" id="activePhoto" runat="server" />
     <div id="pp_gallery" class="pp_gallery">
         <div id="pp_loading" class="pp_loading">
         </div>

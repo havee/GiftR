@@ -26,7 +26,6 @@
 					using (var responseStream = response.GetResponseStream()) {
 						var graph = FacebookGraph.Deserialize(responseStream);
 
-                        StateManager.SetUser(graph);
                         Response.RedirectWithQueryString(PageFlowExtensions.GetDefaultPageUrl().AbsoluteUri);
 					}
 				}

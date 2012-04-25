@@ -6,49 +6,70 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using GiftR.MVCWeb.Models;
+using DotNetOpenAuth.ApplicationBlock;
+using System.Configuration;
+using DotNetOpenAuth.ApplicationBlock.Facebook;
+using GiftR.Common;
+using GiftR.Services;
+using DotNetOpenAuth.OAuth2;
+using System.Net;
 
 namespace GiftR.MVCWeb.Controllers
 {
     public class AccountController : Controller
     {
+        private static readonly FacebookClient client = new FacebookClient
+        {
+            ClientIdentifier = ConfigurationManager.AppSettings["facebookAppID"],
+            ClientSecret = ConfigurationManager.AppSettings["facebookAppSecret"],
+        };
 
         //
         // GET: /Account/LogOn
 
-        public ActionResult LogOn()
+        public ActionResult LogOn(string returnUrl)
         {
-            return View();
-        }
-
-        //
-        // POST: /Account/LogOn
-
-        [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
-        {
-            if (ModelState.IsValid)
+            FacebookGraph fbUser;
+            if (FacebookAuthorization(out fbUser))
             {
-                if (Membership.ValidateUser(model.UserName, model.Password))
+                var user = UsersManager.ConvertFacebookUser(fbUser);
+                if (!UsersService.Exists(user.userid))
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                        && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
-                    {
-                        return Redirect(returnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    UsersService.Save(user);
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    user = UsersService.GetUserByExternalId(fbUser.Id);
+                }
+
+                FormsAuthentication.SetAuthCookie(fbUser.Name, false);
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
+                                                                                 user.fullname,
+                                                                                 DateTime.Now,
+                                                                                 DateTime.Now.AddMinutes(30),
+                                                                                 true,
+                                                                                 user.id.ToString(),
+                                                                                 FormsAuthentication.FormsCookiePath);
+
+                string encTicket = FormsAuthentication.Encrypt(ticket);
+                Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket)); 
+                
+                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
                 }
             }
+            else
+            {
+                LogOn(returnUrl);
+            }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            return View();
         }
 
         //
@@ -148,6 +169,32 @@ namespace GiftR.MVCWeb.Controllers
         public ActionResult ChangePasswordSuccess()
         {
             return View();
+        }
+
+        public bool FacebookAuthorization(out FacebookGraph fbUser)
+        {
+            IAuthorizationState authorization = client.ProcessUserAuthorization();
+            if (authorization == null)
+            {
+                // Kick off authorization request
+                client.RequestUserAuthorization();
+            }
+            else
+            {
+                var request = WebRequest.Create("https://graph.facebook.com/me?access_token=" + Uri.EscapeDataString(authorization.AccessToken));
+                using (var response = request.GetResponse())
+                {
+                    using (var responseStream = response.GetResponseStream())
+                    {
+                        fbUser = FacebookGraph.Deserialize(responseStream);
+
+                        return true;
+                    }
+                }
+            }
+
+            fbUser = null;
+            return false;
         }
 
         #region Status Codes

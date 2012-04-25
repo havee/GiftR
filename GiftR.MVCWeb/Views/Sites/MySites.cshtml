@@ -1,0 +1,37 @@
+﻿@model List<GiftR.MVCWeb.Models.SiteModel>
+@{
+    ViewBag.Title = "My Sites";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="../../Content/Style.css" type="text/css" media="screen" />
+</head>
+<h2>
+    My Sites</h2>
+<div class="grid">
+    <table class="repo">
+        @foreach (var site in Model)
+        {
+            <tr>
+                <td class="title">
+                    @site.Title
+                </td>
+                <td rowspan="2">
+                <span class=minibutton>@Html.ActionLink("Eliminar", "Delete", new { id = site.Id })</span>
+                </td>
+            </tr>
+            <tr class="desc">
+                <td>
+                    <a href="@site.Url">@site.Url</a>
+                </td>
+            </tr>
+            <tr class="sep">
+                <td class="border" colspan="2">
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+</html>

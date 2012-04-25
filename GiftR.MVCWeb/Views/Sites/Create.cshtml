@@ -1,0 +1,53 @@
+﻿@model GiftR.MVCWeb.Models.SiteModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true, "Site creation was unsuccessful. Please correct the errors and try again.")
+    <div>
+        <fieldset>
+            <legend>Account Information</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Title)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Title)
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.SiteType)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.SiteType)
+                @Html.ValidationMessageFor(m => m.SiteType)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.FlickrUserName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.FlickrUserName)
+                @Html.ValidationMessageFor(m => m.FlickrUserName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Email)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Email)
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    </div>
+}

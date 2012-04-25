@@ -96,5 +96,14 @@ namespace GiftR.Repository
                 db.SaveChanges();
             }
         }
+
+        public List<Sites> GetSiteByUserId(int id)
+        {
+            var query = from p in db.SitesOwners
+                        where p.Users.id == id
+                        select p.Sites;
+
+            return query.ToList();
+        }
     }
 }

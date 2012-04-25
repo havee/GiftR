@@ -41,5 +41,12 @@ namespace GiftR.Services
 
             sitesRepo.DeleteSite(siteId);
         }
+
+        public static List<Sites> GetSiteById(int id)
+        {
+            var sitesRepo = new SitesRepository();
+
+            return sitesRepo.GetSiteByUserId(id); 
+        }
     }
 }
