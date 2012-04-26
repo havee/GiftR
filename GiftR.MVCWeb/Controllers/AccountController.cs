@@ -13,11 +13,19 @@ using GiftR.Common;
 using GiftR.Services;
 using DotNetOpenAuth.OAuth2;
 using System.Net;
+using GiftR.MVCWeb.Filters;
 
 namespace GiftR.MVCWeb.Controllers
 {
     public class AccountController : Controller
     {
+        private IUsersService usersService;
+
+        public AccountController(IUsersService service)
+        {
+            this.usersService = service;
+        }
+
         private static readonly FacebookClient client = new FacebookClient
         {
             ClientIdentifier = ConfigurationManager.AppSettings["facebookAppID"],
@@ -33,13 +41,13 @@ namespace GiftR.MVCWeb.Controllers
             if (FacebookAuthorization(out fbUser))
             {
                 var user = UsersManager.ConvertFacebookUser(fbUser);
-                if (!UsersService.Exists(user.userid))
+                if (!usersService.Exists(user.userid))
                 {
-                    UsersService.Save(user);
+                    usersService.Save(user);
                 }
                 else
                 {
-                    user = UsersService.GetUserByExternalId(fbUser.Id);
+                    user = usersService.GetUserByExternalId(fbUser.Id);
                 }
 
                 FormsAuthentication.SetAuthCookie(fbUser.Name, false);
@@ -171,12 +179,12 @@ namespace GiftR.MVCWeb.Controllers
             return View();
         }
 
+        [ActionLogFilter]
         public bool FacebookAuthorization(out FacebookGraph fbUser)
         {
             IAuthorizationState authorization = client.ProcessUserAuthorization();
             if (authorization == null)
             {
-                // Kick off authorization request
                 client.RequestUserAuthorization();
             }
             else

@@ -25,6 +25,17 @@ namespace GiftR.Common
             UriBuilder realmUri = new UriBuilder(contextUri) { Path = url.RequestContext.HttpContext.Request.ApplicationPath, Query = null, Fragment = null };
 
             return realmUri.Uri;
-        }        
+        }
+
+        public static Uri GetCompleteUrl(this UrlHelper url, string relativePath)
+        {
+            Uri contextUri = new Uri(url.RequestContext.HttpContext.Request.Url, url.RequestContext.HttpContext.Request.RawUrl);
+
+            if (relativePath.StartsWith(@"/")) relativePath = relativePath.Substring(1);
+
+            UriBuilder realmUri = new UriBuilder(contextUri) { Path = url.RequestContext.HttpContext.Request.ApplicationPath + relativePath, Query = null, Fragment = null };
+
+            return realmUri.Uri;
+        }  
     }
 }

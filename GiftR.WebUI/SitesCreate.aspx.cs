@@ -33,7 +33,7 @@ namespace GiftR.WebUI
             FacebookGraph fbUser;
             if (StateManager.IsAuthenticated(out fbUser))
             {
-                var user = UsersService.GetUserByExternalId(fbUser.Id);
+                var user = new UsersService().GetUserByExternalId(fbUser.Id);
                 if (user != null)
                 {
                     var code = Guid.NewGuid().ToString();
@@ -44,7 +44,7 @@ namespace GiftR.WebUI
                         site_type = Convert.ToInt32(txtType.Text),
                         verification_code = code
                     };
-                    SitesService.Save(user.id, txtEmail.Text, site);
+                    new SitesService().Save(user.id, txtEmail.Text, site);
 
                     this.pnlForm.Visible = false;
                     this.pnlMsg.Visible = true;

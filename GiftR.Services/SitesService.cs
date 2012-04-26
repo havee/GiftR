@@ -7,9 +7,9 @@ using GiftR.Model;
 
 namespace GiftR.Services
 {
-    public static class SitesService
+    public class SitesService : ISitesService
     {
-        public static Sites GetSiteByCode(string code)
+        public Sites GetSiteByCode(string code)
         {
             var sitesRepo = new SitesRepository();
             Sites site;
@@ -21,28 +21,28 @@ namespace GiftR.Services
             return null;
         }
 
-        public static List<Sites> GetSiteByUserId(long userId)
+        public List<Sites> GetSiteByUserId(long userId)
         {
             var sitesRepo = new SitesRepository();
             
             return sitesRepo.GetSiteByUserId(userId);            
         }
 
-        public static Sites Save(int userid, string email, Sites site)
+        public Sites Save(int userid, string email, Sites site)
         {
             SitesRepository sitesRepo = new SitesRepository();
 
             return sitesRepo.Save(userid, email, site);
         }
 
-        public static void Delete(int siteId)
+        public void Delete(int siteId)
         {
             SitesRepository sitesRepo = new SitesRepository();
 
             sitesRepo.DeleteSite(siteId);
         }
 
-        public static List<Sites> GetSiteById(int id)
+        public List<Sites> GetSiteById(int id)
         {
             var sitesRepo = new SitesRepository();
 

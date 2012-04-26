@@ -26,12 +26,20 @@ namespace GiftR.MVCWeb.Controllers
     [Authorize]
     public class SitesController : Controller
     {
+        private ISiteTypesService siteTypesService;
+        private ISitesService sitesService;
+
+        public SitesController(ISitesService sitesService, ISiteTypesService siteTypesService)
+        {
+            this.sitesService = sitesService;
+            this.siteTypesService = siteTypesService;
+        }
 
         // GET: /Sites/Polaroid
         [OutputCache(Duration = 30, VaryByParam = "icode")]
         public ActionResult Polaroid(string icode)
         {
-            var site = SitesService.GetSiteByCode(icode);
+            var site = sitesService.GetSiteByCode(icode);
 
             FlickrContext context = new FlickrContext();
             context.Photos.OnError += new Query<Photo>.ErrorHandler(Photos_OnError);
@@ -75,22 +83,27 @@ namespace GiftR.MVCWeb.Controllers
                     verification_code = Guid.NewGuid().ToString()
                 };
 
-                SitesService.Save(id, sitemodel.Email, site);
+                sitesService.Save(id, sitemodel.Email, site);
 
                 var shortUrl = GenerateSiteShortLink(site.verification_code);
                 
                 return RedirectToAction("CreateSuccess", new RouteValueDictionary 
-            { 
                 { 
-                    "msg", 
-                    "El sitio se ha creado satisfactoriamente, accedé ya al mismo:"
-                }
-                ,
-                {
-                    "url",
-                    shortUrl
-                }
-            });
+                    { 
+                        "msg", 
+                        "El sitio se ha creado satisfactoriamente, accedé ya al mismo:"
+                    }
+                    ,
+                    {
+                        "url",
+                        shortUrl
+                    }
+                    ,
+                    {
+                        "title",
+                        site.title
+                    }
+                });
             }
 
             return View();
@@ -110,17 +123,25 @@ namespace GiftR.MVCWeb.Controllers
             return shortUrl;
         }
 
-        public ActionResult CreateSuccess(string msg, string url)
+        public ActionResult CreateSuccess(string msg, string url, string title)
         {            
             ViewBag.Msg = msg;
             ViewBag.Url = url;
+            ViewBag.Title = title;
 
             return View();
         }
 
+        public ActionResult SiteTypes()
+        {
+            var model = siteTypesService.ListAll();
+
+            return View(model);
+        }
+
         public ActionResult MySites()
         {
-            var query = SitesService.GetSiteById(Convert.ToInt32(Common.StateManager.GetCurrentUser()));
+            var query = sitesService.GetSiteById(Convert.ToInt32(Common.StateManager.GetCurrentUser()));
             var sites = from p in query
                         select
                         new SiteModel()
@@ -140,7 +161,7 @@ namespace GiftR.MVCWeb.Controllers
 
         public ActionResult Delete(int id)
         {
-            SitesService.Delete(id);
+            sitesService.Delete(id);
 
             return RedirectToAction("MySites");
         }

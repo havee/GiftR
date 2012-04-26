@@ -38,9 +38,9 @@ namespace GiftR.WebUI
                 if (StateManager.IsAuthenticated(out fbUser))
                 {
                     var user = UsersManager.ConvertFacebookUser(fbUser);
-                    if (! UsersService.Exists(user.id))
+                    if (! new UsersService().Exists(user.id))
                     {
-                        UsersService.Save(user);
+                        new UsersService().Save(user);
                     }
 
                     GetSite();
@@ -56,7 +56,7 @@ namespace GiftR.WebUI
         {
             if (Request.QueryString["icode"] != null)
             {
-                var site = SitesService.GetSiteByCode(Request.QueryString["icode"]);
+                var site = new SitesService().GetSiteByCode(Request.QueryString["icode"]);
                 if (site != null)
                 {
                     StateManager.AddSite(site);

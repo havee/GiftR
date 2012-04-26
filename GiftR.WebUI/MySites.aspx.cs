@@ -36,7 +36,7 @@ namespace GiftR.WebUI
 
         public void btnDelete_Command(object sender, CommandEventArgs e)
         {
-            SitesService.Delete(Convert.ToInt32(e.CommandArgument));
+            new SitesService().Delete(Convert.ToInt32(e.CommandArgument));
             BindSites();
         }
     }

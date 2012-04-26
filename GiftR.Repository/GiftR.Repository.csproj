@@ -46,6 +46,7 @@
     <Compile Include="BaseRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SitesRepository.cs" />
+    <Compile Include="SiteTypesRepository.cs" />
     <Compile Include="UsersRepository.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -42,8 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ISitesService.cs" />
+    <Compile Include="ISiteTypesService.cs" />
+    <Compile Include="IUsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SitesService.cs" />
+    <Compile Include="SiteTypesService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>
   <ItemGroup>

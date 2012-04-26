@@ -51,6 +51,8 @@
           <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="default_page" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="css" Type="nvarchar" MaxLength="200" />
+          <Property Name="tiny_image_url" Type="nvarchar" MaxLength="300" />
+          <Property Name="large_image_url" Type="nvarchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -155,6 +157,8 @@
           <Property Name="default_page" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Sites" Relationship="GiftR.Model.FK_Sites_SitesTypes" FromRole="SitesTypes" ToRole="Sites" />
           <Property Type="String" Name="css" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="tiny_image_url" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="large_image_url" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -226,7 +230,9 @@
             <ScalarProperty Name="user_id" ColumnName="user_id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="SitesTypes"><EntityTypeMapping TypeName="GiftR.Model.SitesTypes"><MappingFragment StoreEntitySet="SitesTypes">
-            <ScalarProperty Name="css" ColumnName="css" />
+            <ScalarProperty Name="large_image_url" ColumnName="large_image_url" />
+                <ScalarProperty Name="tiny_image_url" ColumnName="tiny_image_url" />
+                <ScalarProperty Name="css" ColumnName="css" />
                 <ScalarProperty Name="id" ColumnName="id" />
             <ScalarProperty Name="name" ColumnName="name" />
             <ScalarProperty Name="default_page" ColumnName="default_page" />

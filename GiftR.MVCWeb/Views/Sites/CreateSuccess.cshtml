@@ -1,4 +1,5 @@
-﻿@{
+﻿@using GiftR.Common
+@{
     ViewBag.Title = "Create Site";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -13,11 +14,17 @@
         </h2>
         <br />
         <div style="float:right; margin-bottom:100px">
-        <a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php" share_url="@ViewBag.Url">
+        <a name="fb_share" type="button" href="http://www.facebook.com/sharer.php?s=100&p[title]=@ViewBag.Title&p[url]=@ViewBag.Url&p[images][0]=@Url.GetCompleteUrl("Content/flickr_logo.png")&p[summary]=Super developer company">
+
             Compartir</a>
+
+                    <a name="fb_share" type="button" href="http://www.facebook.com/sharer.php?s=100&p[title]=@ViewBag.Title&p[url]=@ViewBag.Url&p[images][0]=http://www.evoolution.es/WebRoot/StoreES3/Shops/eb9159/MediaGallery/flickr_logo.png&p[summary]=Super developer company">
+
+            Compartir</a>
+
+            
         <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
-        </script>
-        
+        </script>        
         </div>
         <br />
         <br />

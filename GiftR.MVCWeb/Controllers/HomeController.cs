@@ -17,11 +17,18 @@ namespace GiftR.MVCWeb.Controllers
     [Authorize()]
     public class HomeController : Controller
     {
+        private ISitesService sitesService;
+
+        public HomeController(ISitesService service)
+        {
+            this.sitesService = service;
+        }
+
         public void Index(string icode)
         {
             if (!String.IsNullOrEmpty(icode))
             {
-                var site = SitesService.GetSiteByCode(icode);
+                var site = sitesService.GetSiteByCode(icode);
                 if (site != null)
                 {
                     StateManager.AddSite(site);

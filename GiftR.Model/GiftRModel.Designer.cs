@@ -765,6 +765,54 @@ namespace GiftR.Model
         private global::System.String _css;
         partial void OncssChanging(global::System.String value);
         partial void OncssChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String tiny_image_url
+        {
+            get
+            {
+                return _tiny_image_url;
+            }
+            set
+            {
+                Ontiny_image_urlChanging(value);
+                ReportPropertyChanging("tiny_image_url");
+                _tiny_image_url = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("tiny_image_url");
+                Ontiny_image_urlChanged();
+            }
+        }
+        private global::System.String _tiny_image_url;
+        partial void Ontiny_image_urlChanging(global::System.String value);
+        partial void Ontiny_image_urlChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String large_image_url
+        {
+            get
+            {
+                return _large_image_url;
+            }
+            set
+            {
+                Onlarge_image_urlChanging(value);
+                ReportPropertyChanging("large_image_url");
+                _large_image_url = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("large_image_url");
+                Onlarge_image_urlChanged();
+            }
+        }
+        private global::System.String _large_image_url;
+        partial void Onlarge_image_urlChanging(global::System.String value);
+        partial void Onlarge_image_urlChanged();
 
         #endregion
     

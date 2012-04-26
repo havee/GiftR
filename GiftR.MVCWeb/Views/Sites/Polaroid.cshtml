@@ -348,15 +348,17 @@
 
 
     </script>
+    <script type="text/javascript">        var switchTo5x = true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript" src="http://s.sharethis.com/loader.js"></script>
 </head>
 <body>
-<h1>
-        </h1>
-    <span ID="loggedInName" class="roundButton">Bienvenido, @User.Identity.Name</span>
+    <h1>
+    </h1>
+    <span id="loggedInName" class="roundButton">Bienvenido, @User.Identity.Name</span>
     <a id="ribbon" href="../../Sites/Create" target="_blank">
         <img alt="" src="../../images/corner-ribbon.png" width="170" height="170" />
     </a>
-
     <input type="hidden" id="activePhoto" runat="server" />
     <div id="pp_gallery" class="pp_gallery">
         <div id="pp_loading" class="pp_loading">
@@ -367,18 +369,24 @@
         </div>
         <div id="pp_thumbContainer">
             <div class="album">
-            @foreach (var image in Model)
-            {
-                <div class="content">
-                    <img src='@image.Src' alt='@image.Alt' id='@image.Id' />
-                    <span>
-                        @image.Title</span>
-                </div>
-            }            
+                @foreach (var image in Model)
+                {
+                    <div class="content">
+                        <img src='@image.Src' alt='@image.Alt' id='@image.Id' />
+                        <span>
+                            @image.Title</span>
+                    </div>
+                }
             </div>
             <div id="pp_back" class="pp_back">
                 Apilar</div>
         </div>
     </div>
+    <script>
+
+        var options = { "publisher": "3ef1067d-3d78-4de2-8e30-a03362b6b973", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0 }, "chicklets": { "items": ["facebook", "twitter", "googleplus", "linkedin", "email"]} };
+        var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+        
+    </script>
 </body>
 </html>
