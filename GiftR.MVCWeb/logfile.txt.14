@@ -1,0 +1,176 @@
+2012-04-26 16:15:13,583 [27] INFO  DotNetOpenAuth [(null)] - DotNetOpenAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246 (official)
+2012-04-26 16:15:13,604 [27] WARN  DotNetOpenAuth.Messaging [(null)] - Message type EndUserAuthorizationImplicitRequest has more than one message part named response_type.  Inherited members will be hidden.
+2012-04-26 16:15:13,674 [5] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Scanning incoming request for messages: http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+2012-04-26 16:15:13,675 [5] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Incoming HTTP request: GET http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+2012-04-26 16:15:13,688 [27] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Scanning incoming request for messages: http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+2012-04-26 16:15:13,689 [27] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Incoming HTTP request: GET http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+2012-04-26 16:15:13,697 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenRefreshRequest message: {refresh_token,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,699 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenAuthorizationCodeRequest message: {code,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,699 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenResourceOwnerPasswordCredentialsRequest message: {username,
+password,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,699 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenClientCredentialsRequest message: {grant_type,
+client_id,}
+2012-04-26 16:15:13,700 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationRequest message: {client_id,
+response_type,}
+2012-04-26 16:15:13,700 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationImplicitRequest message: {response_type,
+client_id,}
+2012-04-26 16:15:13,700 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationSuccessAuthCodeResponse message: {code,}
+2012-04-26 16:15:13,700 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationSuccessAccessTokenResponse message: {token_type,
+access_token,}
+2012-04-26 16:15:13,700 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationFailedResponse message: {error,}
+2012-04-26 16:15:13,714 [5] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Preparing to send EndUserAuthorizationRequest (2.0) message.
+2012-04-26 16:15:13,727 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenRefreshRequest message: {refresh_token,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,727 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenAuthorizationCodeRequest message: {code,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,727 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenResourceOwnerPasswordCredentialsRequest message: {username,
+password,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,727 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenClientCredentialsRequest message: {grant_type,
+client_id,}
+2012-04-26 16:15:13,727 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationRequest message: {client_id,
+response_type,}
+2012-04-26 16:15:13,727 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationImplicitRequest message: {response_type,
+client_id,}
+2012-04-26 16:15:13,727 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationSuccessAuthCodeResponse message: {code,}
+2012-04-26 16:15:13,727 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationSuccessAccessTokenResponse message: {token_type,
+access_token,}
+2012-04-26 16:15:13,728 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationFailedResponse message: {error,}
+2012-04-26 16:15:13,728 [27] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Preparing to send EndUserAuthorizationRequest (2.0) message.
+2012-04-26 16:15:13,751 [27] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Prepared outgoing EndUserAuthorizationRequest (2.0) message for https://graph.facebook.com/oauth/authorize: 
+	client_id: 214689278631126
+	redirect_uri: http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+	response_type: code
+
+2012-04-26 16:15:13,751 [5] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Prepared outgoing EndUserAuthorizationRequest (2.0) message for https://graph.facebook.com/oauth/authorize: 
+	client_id: 214689278631126
+	redirect_uri: http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+	response_type: code
+
+2012-04-26 16:15:13,811 [27] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Sending message: EndUserAuthorizationRequest
+2012-04-26 16:15:13,816 [5] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Sending message: EndUserAuthorizationRequest
+2012-04-26 16:15:13,816 [27] DEBUG DotNetOpenAuth.Http [(null)] - Redirecting to https://graph.facebook.com/oauth/authorize?client_id=214689278631126&redirect_uri=http%3A%2F%2Flocalhost%3A54600%2FAccount%2FLogOn%3FReturnUrl%3D%252fHome%252fIndex%252f9d3a8920-125f-4fd4-86a3-973939bcc384&response_type=code
+2012-04-26 16:15:13,816 [5] DEBUG DotNetOpenAuth.Http [(null)] - Redirecting to https://graph.facebook.com/oauth/authorize?client_id=214689278631126&redirect_uri=http%3A%2F%2Flocalhost%3A54600%2FAccount%2FLogOn%3FReturnUrl%3D%252fHome%252fIndex%252f9d3a8920-125f-4fd4-86a3-973939bcc384&response_type=code
+2012-04-26 16:15:13,824 [27] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Scanning incoming request for messages: http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+2012-04-26 16:15:13,824 [27] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Incoming HTTP request: GET http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenRefreshRequest message: {refresh_token,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenAuthorizationCodeRequest message: {code,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenResourceOwnerPasswordCredentialsRequest message: {username,
+password,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenClientCredentialsRequest message: {grant_type,
+client_id,}
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationRequest message: {client_id,
+response_type,}
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationImplicitRequest message: {response_type,
+client_id,}
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationSuccessAuthCodeResponse message: {code,}
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationSuccessAccessTokenResponse message: {token_type,
+access_token,}
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationFailedResponse message: {error,}
+2012-04-26 16:15:13,825 [27] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Preparing to send EndUserAuthorizationRequest (2.0) message.
+2012-04-26 16:15:13,825 [27] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Prepared outgoing EndUserAuthorizationRequest (2.0) message for https://graph.facebook.com/oauth/authorize: 
+	client_id: 214689278631126
+	redirect_uri: http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+	response_type: code
+
+2012-04-26 16:15:13,826 [27] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Sending message: EndUserAuthorizationRequest
+2012-04-26 16:15:13,826 [27] DEBUG DotNetOpenAuth.Http [(null)] - Redirecting to https://graph.facebook.com/oauth/authorize?client_id=214689278631126&redirect_uri=http%3A%2F%2Flocalhost%3A54600%2FAccount%2FLogOn%3FReturnUrl%3D%252fHome%252fIndex%252f9d3a8920-125f-4fd4-86a3-973939bcc384&response_type=code
+2012-04-26 16:15:13,839 [5] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Scanning incoming request for messages: http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+2012-04-26 16:15:13,839 [5] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Incoming HTTP request: GET http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+2012-04-26 16:15:13,839 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenRefreshRequest message: {refresh_token,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,839 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenAuthorizationCodeRequest message: {code,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,839 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenResourceOwnerPasswordCredentialsRequest message: {username,
+password,
+grant_type,
+client_id,}
+2012-04-26 16:15:13,839 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenClientCredentialsRequest message: {grant_type,
+client_id,}
+2012-04-26 16:15:13,839 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationRequest message: {client_id,
+response_type,}
+2012-04-26 16:15:13,840 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationImplicitRequest message: {response_type,
+client_id,}
+2012-04-26 16:15:13,840 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationSuccessAuthCodeResponse message: {code,}
+2012-04-26 16:15:13,840 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationSuccessAccessTokenResponse message: {token_type,
+access_token,}
+2012-04-26 16:15:13,840 [5] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationFailedResponse message: {error,}
+2012-04-26 16:15:13,840 [5] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Preparing to send EndUserAuthorizationRequest (2.0) message.
+2012-04-26 16:15:13,840 [5] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Prepared outgoing EndUserAuthorizationRequest (2.0) message for https://graph.facebook.com/oauth/authorize: 
+	client_id: 214689278631126
+	redirect_uri: http://localhost:54600/Account/LogOn?ReturnUrl=%2fHome%2fIndex%2f9d3a8920-125f-4fd4-86a3-973939bcc384
+	response_type: code
+
+2012-04-26 16:15:13,841 [5] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Sending message: EndUserAuthorizationRequest
+2012-04-26 16:15:13,855 [5] DEBUG DotNetOpenAuth.Http [(null)] - Redirecting to https://graph.facebook.com/oauth/authorize?client_id=214689278631126&redirect_uri=http%3A%2F%2Flocalhost%3A54600%2FAccount%2FLogOn%3FReturnUrl%3D%252fHome%252fIndex%252f9d3a8920-125f-4fd4-86a3-973939bcc384&response_type=code
+2012-04-26 16:15:18,727 [20] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Scanning incoming request for messages: http://localhost:54600/Account/LogOn?ReturnUrl=%2FHome%2FIndex%2F9d3a8920-125f-4fd4-86a3-973939bcc384&code=AQBwWRPYw3EVTc82py_LaKd7pqKFRfAFkkTSj_m6lImdQIfUVZGpRp4YmLa-5oPdsFmCY45o8l7_eB3h-pW7-nGn3Yh62OIg7NrHjh_G_ZF5pcrOOYbwvN9S2imjiZUiA27lj1OsZnAxmNpnNoc-dmLqi6oMuWUX96iOnxtvLx-HyPJEworP1441g2YcNCOR87o
+2012-04-26 16:15:18,727 [20] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Incoming HTTP request: GET http://localhost:54600/Account/LogOn?ReturnUrl=%2FHome%2FIndex%2F9d3a8920-125f-4fd4-86a3-973939bcc384&code=AQBwWRPYw3EVTc82py_LaKd7pqKFRfAFkkTSj_m6lImdQIfUVZGpRp4YmLa-5oPdsFmCY45o8l7_eB3h-pW7-nGn3Yh62OIg7NrHjh_G_ZF5pcrOOYbwvN9S2imjiZUiA27lj1OsZnAxmNpnNoc-dmLqi6oMuWUX96iOnxtvLx-HyPJEworP1441g2YcNCOR87o
+2012-04-26 16:15:18,727 [20] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenRefreshRequest message: {refresh_token,
+grant_type,
+client_id,}
+2012-04-26 16:15:18,728 [20] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenAuthorizationCodeRequest message: {grant_type,
+client_id,}
+2012-04-26 16:15:18,728 [20] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenResourceOwnerPasswordCredentialsRequest message: {username,
+password,
+grant_type,
+client_id,}
+2012-04-26 16:15:18,728 [20] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenClientCredentialsRequest message: {grant_type,
+client_id,}
+2012-04-26 16:15:18,728 [20] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationRequest message: {client_id,
+response_type,}
+2012-04-26 16:15:18,728 [20] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationImplicitRequest message: {response_type,
+client_id,}
+2012-04-26 16:15:18,728 [20] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationSuccessAccessTokenResponse message: {token_type,
+access_token,}
+2012-04-26 16:15:18,728 [20] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.EndUserAuthorizationFailedResponse message: {error,}
+2012-04-26 16:15:18,734 [20] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Incoming request received: EndUserAuthorizationSuccessAuthCodeResponse
+2012-04-26 16:15:18,735 [20] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Processing incoming EndUserAuthorizationSuccessAuthCodeResponse (2.0) message:
+	code: AQBwWRPYw3EVTc82py_LaKd7pqKFRfAFkkTSj_m6lImdQIfUVZGpRp4YmLa-5oPdsFmCY45o8l7_eB3h-pW7-nGn3Yh62OIg7NrHjh_G_ZF5pcrOOYbwvN9S2imjiZUiA27lj1OsZnAxmNpnNoc-dmLqi6oMuWUX96iOnxtvLx-HyPJEworP1441g2YcNCOR87o
+	ReturnUrl: /Home/Index/9d3a8920-125f-4fd4-86a3-973939bcc384
+
+2012-04-26 16:15:18,736 [20] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - After binding element processing, the received EndUserAuthorizationSuccessAuthCodeResponse (2.0) message is: 
+	code: AQBwWRPYw3EVTc82py_LaKd7pqKFRfAFkkTSj_m6lImdQIfUVZGpRp4YmLa-5oPdsFmCY45o8l7_eB3h-pW7-nGn3Yh62OIg7NrHjh_G_ZF5pcrOOYbwvN9S2imjiZUiA27lj1OsZnAxmNpnNoc-dmLqi6oMuWUX96iOnxtvLx-HyPJEworP1441g2YcNCOR87o
+	ReturnUrl: /Home/Index/9d3a8920-125f-4fd4-86a3-973939bcc384
+
+2012-04-26 16:15:18,739 [20] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Preparing to send AccessTokenAuthorizationCodeRequest (2.0) message.
+2012-04-26 16:15:18,740 [20] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Prepared outgoing AccessTokenAuthorizationCodeRequest (2.0) message for https://graph.facebook.com/oauth/access_token: 
+	code: AQBwWRPYw3EVTc82py_LaKd7pqKFRfAFkkTSj_m6lImdQIfUVZGpRp4YmLa-5oPdsFmCY45o8l7_eB3h-pW7-nGn3Yh62OIg7NrHjh_G_ZF5pcrOOYbwvN9S2imjiZUiA27lj1OsZnAxmNpnNoc-dmLqi6oMuWUX96iOnxtvLx-HyPJEworP1441g2YcNCOR87o
+	redirect_uri: http://localhost:54600/Account/LogOn?ReturnUrl=%2FHome%2FIndex%2F9d3a8920-125f-4fd4-86a3-973939bcc384
+	grant_type: authorization_code
+	client_id: 214689278631126
+	client_secret: ae3e71811a927ff5219d17459f73f3b4
+
+2012-04-26 16:15:18,740 [20] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Sending AccessTokenAuthorizationCodeRequest request.
+2012-04-26 16:15:22,375 [20] DEBUG DotNetOpenAuth.Http [(null)] - HTTP POST https://graph.facebook.com/oauth/access_token
+2012-04-26 16:15:23,193 [20] DEBUG DotNetOpenAuth.Messaging [(null)] - The following required parameters were missing from the DotNetOpenAuth.OAuth2.Messages.AccessTokenFailedResponse message: {error,}
+2012-04-26 16:15:23,195 [20] WARN  DotNetOpenAuth.Messaging [(null)] - Multiple message types seemed to fit the incoming data: {AccessTokenSuccessResponse (2.0),
+UnauthorizedResponse (2.0),}
+2012-04-26 16:15:23,198 [20] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - Received AccessTokenSuccessResponse response.
+2012-04-26 16:15:23,198 [20] INFO  DotNetOpenAuth.Messaging.Channel [(null)] - Processing incoming AccessTokenSuccessResponse (2.0) message:
+	access_token: AAADDQj4wnNYBAARYMzPyZB5r1YqYhZCtbOiaysq6eU9viZAtZB0WeFXpXyXhsZCqNynT6VUSgUWhgcxZA4rviuh14elOh7Jh0dr7tDYtGw6gZDZD
+	token_type: bearer
+	expires: 5169715
+
+2012-04-26 16:15:23,199 [20] DEBUG DotNetOpenAuth.Messaging.Channel [(null)] - After binding element processing, the received AccessTokenSuccessResponse (2.0) message is: 
+	access_token: AAADDQj4wnNYBAARYMzPyZB5r1YqYhZCtbOiaysq6eU9viZAtZB0WeFXpXyXhsZCqNynT6VUSgUWhgcxZA4rviuh14elOh7Jh0dr7tDYtGw6gZDZD
+	token_type: bearer
+	expires: 5169715
+
+2012-04-26 16:15:28,628 [26] INFO  GiftR.MVCWeb [(null)] - GiftR.MVCWeb.Controllers.HomeController

@@ -64,6 +64,64 @@ namespace GiftR.MVCWeb.Controllers
         }
 
 
+        // GET: /Sites/ADGallery
+        [OutputCache(Duration = 30, VaryByParam = "icode")]
+        public ActionResult ADGallery(string icode)
+        {
+            var site = sitesService.GetSiteByCode(icode);
+
+            FlickrContext context = new FlickrContext();
+            context.Photos.OnError += new Query<Photo>.ErrorHandler(Photos_OnError);
+
+            var bigs = (from ph in context.Photos
+                        where ph.User == site.flickr_username
+                        && ph.PhotoSize == PhotoSize.Default
+                        select ph).ToList();
+
+            var thumbs = (from ph in context.Photos
+                          where ph.User == site.flickr_username
+                          && ph.PhotoSize == PhotoSize.Thumbnail
+                          select ph).ToList();
+
+            var query = from b in bigs
+                        join t in thumbs on b.Id equals t.Id
+                        select new Image() { Src = t.Url, Alt = b.Url, Id = t.Id, Title = t.Title };
+
+
+            ViewBag.Title = site.title;
+            return View(query.ToList());
+        }
+
+        // GET: /Sites/Space
+        [OutputCache(Duration = 30, VaryByParam = "icode")]
+        public ActionResult Space(string icode)
+        {
+            var site = sitesService.GetSiteByCode(icode);
+
+            FlickrContext context = new FlickrContext();
+            context.Photos.OnError += new Query<Photo>.ErrorHandler(Photos_OnError);
+
+            var bigs = (from ph in context.Photos
+                        where ph.User == site.flickr_username
+                        && ph.PhotoSize == PhotoSize.Default
+                        select ph).ToList();
+
+            var thumbs = (from ph in context.Photos
+                          where ph.User == site.flickr_username
+                          && ph.PhotoSize == PhotoSize.Thumbnail
+                          select ph).ToList();
+
+            var query = from b in bigs
+                        join t in thumbs on b.Id equals t.Id
+                        select new Image() { Src = t.Url, Alt = b.Url, Id = t.Id, Title = t.Title };
+
+
+            ViewBag.Title = site.title;
+            return View(query.ToList());
+        }
+
+
+
         public ActionResult Create()
         {
             return View();

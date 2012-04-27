@@ -24,7 +24,7 @@ namespace GiftR.MVCWeb.Controllers
             this.sitesService = service;
         }
 
-        public void Index(string icode)
+        public ActionResult Index(string icode)
         {
             if (!String.IsNullOrEmpty(icode))
             {
@@ -33,20 +33,22 @@ namespace GiftR.MVCWeb.Controllers
                 {
                     StateManager.AddSite(site);
 
-                    ViewSite(site.SitesTypes.default_page);
+                    return ViewSite(site.SitesTypes.default_page);
                 }
             }
             else
             {
-                CreateSite();
+                return RedirectToAction("CreateSite");
             }
+
+            return View();
         }
 
-        public void ViewSite(string page)
+        public ActionResult ViewSite(string page)
         {
             page += "/" + RouteData.Values["icode"];
 
-            Response.Redirect(page);
+            return RedirectPermanent(page);            
         }
 
         public ActionResult CreateSite()

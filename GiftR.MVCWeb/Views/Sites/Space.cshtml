@@ -1,0 +1,44 @@
+﻿@model List<GiftR.MVCWeb.Models.Image>
+@{
+    ViewBag.Title = "Space";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Polaroid Photobar Gallery" />
+
+
+    <link rel="stylesheet" media="screen" type="text/css" href="../../Content/Space/layout.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="../../Content/Space/spacegallery.css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="../../Content/Space/custom.css" />
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../../Scripts/Space/eye.js"></script>
+    <script type="text/javascript" src="../../Scripts/Space/utils.js"></script>
+    <script type="text/javascript" src="../../Scripts/Space/spacegallery.js"></script>
+    <script type="text/javascript" src="../../Scripts/Space/layout.js"></script>
+    <script type="text/javascript">
+        $('#myGallery').spacegallery({ loadingClass: 'loading' });
+    </script>
+</head>
+<body>
+    <h1>
+    </h1>
+    <div id="myGallery" class="spacegallery">
+        @foreach (var image in Model)
+        {
+            <img src="@image.Alt" alt="" />		
+        }
+    </div>
+    <script>
+
+        var options = { "publisher": "3ef1067d-3d78-4de2-8e30-a03362b6b973", "position": "left", "ad": { "visible": false, "openDelay": 5, "closeDelay": 0 }, "chicklets": { "items": ["facebook", "twitter", "googleplus", "linkedin", "email"]} };
+        var st_hover_widget = new sharethis.widgets.hoverbuttons(options);
+        
+    </script>
+</body>
+</html>
